@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакти — Сайт-резюме вчителя початкових класів</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Резюме вчителя НУШ</a>
+      <nav class="site-nav" aria-label="Головна навігація">
+        <ul class="nav-list">
+          <li><a href="index.html">Головна</a></li>
+          <li><a href="education.html">Освіта</a></li>
+          <li><a href="experience.html">Досвід</a></li>
+          <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <nav aria-label="Хлібні крихти">
+        <p><a href="index.html">Головна</a> / Контакти</p>
+      </nav>
+      <h1 class="animated-title">Контакти та зворотний зв’язок</h1>
+
+      <div class="content-layout">
+        <section class="main-column">
+          <h2>Написати повідомлення</h2>
+          <p>Заповніть форму нижче, щоб надіслати пропозицію щодо співбесіди, педагогічної практики чи професійної співпраці.</p>
+
+          <form class="contact-form" id="feedback-form">
+            <div class="form-group">
+              <label for="sender-name">Ваше ім’я та прізвище *</label>
+              <input type="text" id="sender-name" name="sender-name" placeholder="Наприклад, Ірина Мельник" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-email">Електронна пошта *</label>
+              <input type="email" id="sender-email" name="sender-email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-phone">Номер телефону</label>
+              <input type="tel" id="sender-phone" name="sender-phone" placeholder="+380 00 000 00 00">
+            </div>
+
+            <div class="form-group">
+              <label for="topic-select">Тема звернення *</label>
+              <select id="topic-select" name="topic-select" required>
+                <option value="">Оберіть тему</option>
+                <option value="vacancy">Пропозиція роботи / співбесіда</option>
+                <option value="practice">Педагогічна практика</option>
+                <option value="collaboration">Методична співпраця</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sender-message">Повідомлення *</label>
+              <textarea id="sender-message" name="sender-message" rows="5" placeholder="Напишіть ваше повідомлення..." required></textarea>
+            </div>
+
+            <button class="submit-btn" type="submit">Надіслати повідомлення</button>
+          </form>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <aside class="sidebar-box">
+          <h2>Додаткова інформація</h2>
+          <p>Відкрита до пропозицій щодо роботи вчителем початкових класів у закладах освіти та проходження педагогічної практики.</p>
+          <p>Зовнішній ресурс: <a href="https://nus.org.ua/" target="_blank" rel="noopener noreferrer">Портал «Нова українська школа»</a>.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Персональний сайт-резюме вчителя початкових класів</p>
+    </div>
+  </footer>
+
+  <script>
+    const feedbackForm = document.getElementById("feedback-form");
+    const formStatus = document.getElementById("form-status");
+
+    if (feedbackForm && formStatus) {
+      feedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!feedbackForm.checkValidity()) {
+          feedbackForm.reportValidity();
+          return;
+        }
+
+        const senderName = document.getElementById("sender-name").value.trim();
+        formStatus.textContent = "Дякуємо, " + senderName + "! Ваше повідомлення перевірено та підготовлено до відправлення.";
+        formStatus.classList.add("is-visible");
+        feedbackForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
